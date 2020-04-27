@@ -3,10 +3,9 @@ using UnityEngine.Events;
 
 public class ChipMove : MonoBehaviour
 {
-    public UnityEvent MovementChip;
-    public event UnityAction<Vector3> PositionChange;
-
     [SerializeField] private BoxCollider2D _boxCollider;
+    
+    public UnityEvent MovementChip;
 
     private void OnMouseDown()
     {
@@ -32,8 +31,8 @@ public class ChipMove : MonoBehaviour
                 MovementChip?.Invoke();
                 Vector2 temp = transform.position; 
                 transform.position = emptyPlace.transform.position;
-                PositionChange?.Invoke(temp);
-                
+
+                emptyPlace.PositionChange(temp);
                 isChengePosition = true;
             }
         }

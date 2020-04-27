@@ -4,12 +4,11 @@ using UnityEngine.Events;
 
 public class WinGame : MonoBehaviour
 {
-
-    public UnityEvent GameWinHandler;
-
     private List<Vector3> _сhildPosition = new List<Vector3>();
     private List<Vector3> _thisWin = new List<Vector3>();
     private EmptyPlace _emptyPlace;
+
+    public UnityEvent GameWinHandler;
 
     private void Awake()
     {
@@ -21,6 +20,7 @@ public class WinGame : MonoBehaviour
             _сhildPosition.Add(transform.GetChild(i).position);
         }
     }
+
     private void Start()
     {
         RemixByShuffle();

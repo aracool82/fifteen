@@ -2,13 +2,13 @@
 using UnityEngine.Events;
 using TMPro;
 
+[RequireComponent (typeof(Animation))]
+
 public class ShowTime : MonoBehaviour
 {
-    public UnityEvent ScaleTime;
-
     [SerializeField] private TMP_Text text;
-
-    private Animation animation;
+    
+    private Animation _animationText;
     private EmptyPlace _emptyPlace;
     
     private int _second = 0;
@@ -17,9 +17,10 @@ public class ShowTime : MonoBehaviour
 
     private void Awake()
     {
-        animation = GetComponent<Animation>();
+        _animationText = GetComponent<Animation>();
         _emptyPlace = FindObjectOfType<EmptyPlace>();
     }
+
     private void Update()
     {
         _stepTime+= Time.deltaTime;
@@ -53,7 +54,7 @@ public class ShowTime : MonoBehaviour
 
     private void OnEptyPositionChange()
     {
-        animation.Play();
+        _animationText.Play();
     }
 
     public void SetTimeInZero()
