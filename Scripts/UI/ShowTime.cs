@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using TMPro;
 
 [RequireComponent (typeof(Animation))]
@@ -13,7 +12,9 @@ public class ShowTime : MonoBehaviour
     
     private int _second = 0;
     private int _minute = 0;
+    private int _sumSecond=0;
     private  float _stepTime =0f;
+    public int SumSecond => _sumSecond;
 
     private void Awake()
     {
@@ -33,9 +34,10 @@ public class ShowTime : MonoBehaviour
 
     private void TimeFormat()
     {
+        _sumSecond++;
         _second++;
         if (_second > 59)
-        { 
+        {
             _second = 0;
             _minute++;
         }
@@ -61,5 +63,6 @@ public class ShowTime : MonoBehaviour
     {
         _minute = 0;
         _second = 0;
+        _sumSecond = 0;
     }
 }
